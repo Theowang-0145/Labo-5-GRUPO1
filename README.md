@@ -8,7 +8,9 @@ Para compilar utilice el comando: "make"
 
 ## Ejecutar
 
-Para ejecutar utilice el comando: "./main"
+Para ejecutar utilice el comando: "make run"
+
+Recuerde compilar antes de correr el programa.
 
 ## Limpiar
 
