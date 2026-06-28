@@ -2,8 +2,6 @@
 
 Implementación de estructuras de datos en C.
 
-## Esta es la branch develop
-
 ## Compilar
 
 Para compilar utilice el comando: "make"
@@ -17,3 +15,11 @@ Recuerde compilar antes de correr el programa.
 ## Limpiar
 
 Para limpiar utilice el comando: "make clean"
+
+## Integrantes 
+
+Theo Wang Lizarme - C5L093
+
+Aarón Madrigal Marín - C14373
+
+Bryan Sánchez Chavarría - C37283
