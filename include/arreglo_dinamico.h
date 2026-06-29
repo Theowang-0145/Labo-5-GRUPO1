@@ -13,11 +13,9 @@ typedef struct {    //este es el struct base para el arreglo dinamico
 
 //este conjunto de funciones reciben el puntero hacia el arreglo para modificarlo o crearle memoria
 void init_arreglo(ArrDinamico *punt_datos, size_t capacidad_inicial); 
-void insertar_inicio(ArrDinamico *punt_datos, int valor); //este debe de tener una verificacion de espacio
 void insertar_final(ArrDinamico *punt_datos, int valor); //este debe de tener una verificacion de espacio
-void insertar_posi_espec(ArrDinamico *punt_datos, int valor, int posicion);//este debe de tener una verificacion de espacio
-void eliminar_elemento_segun_data(ArrDinamico *punt_datos, int valor); 
-void buscar(ArrDinamico *punt_datos, int valor);
+void eliminar_elemento(ArrDinamico *punt_datos, int valor); 
+void buscar_elemento_por_indice(ArrDinamico *punt_datos, int valor);
 void imprimir_arreglo(ArrDinamico *punt_datos);
 void free_arreglo(ArrDinamico *punt_datos);
 
