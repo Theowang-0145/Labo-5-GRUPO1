@@ -28,12 +28,6 @@ void init_arreglo(ArrDinamico *punt_datos, size_t capacidad_inicial){
 }
 
 
-void insertar_inicio(ArrDinamico *punt_datos, int valor){
-    (void)punt_datos;
-    (void)valor;
-} 
-
-
 void insertar_final(ArrDinamico *punt_datos, int valor){
 
 
@@ -63,20 +57,39 @@ void insertar_final(ArrDinamico *punt_datos, int valor){
 
 }
 
-void insertar_posi_espec(ArrDinamico *punt_datos, int valor, int posicion){
-    (void)punt_datos;
-    (void)valor;
-    (void)posicion;
-}
-void eliminar_elemento_segun_data(ArrDinamico *punt_datos, int valor){
-    (void)punt_datos;
-    (void)valor;
-} 
-void buscar(ArrDinamico *punt_datos, int valor){
-    (void)punt_datos;
-    (void)valor;
-}
+void eliminar_elemento_por_indice(ArrDinamico *punt_datos, size_t posicion){ //como el laboratorio no indica el metodo se escoge eliminar el elemento por indice
 
+    if (posicion >= punt_datos->size) {
+        printf("Indice fuera de rango.\n");
+        return;
+    }
+
+    //la logica de este for es empezar a reemplazar datos a partir de la posicion dada y luego reducir el tamano en uno
+    for (size_t i = posicion; i < punt_datos->size - 1; i++){
+        //tomar en cuenta que el for itera n veces con n siendola cantidad de elementos que tiene el el numero a eliminar por delante
+        punt_datos->data[i] = punt_datos->data[i+1]; //se reemplaza con el de adelante pues se busca eliminar ese de en medio
+    }
+
+    //tener en cuenta que el puntero va a tener un numero de mas del size, pero ese numero se empieza a tomar como basura pues no entra en el rango de size
+    punt_datos->data[punt_datos->size - 1] = 0; 
+    punt_datos->size --;
+
+} 
+size_t buscar_elemento_por_indice(ArrDinamico *punt_datos, size_t posicion){
+
+    //se inicializa una variable donde se va a guardar la informacion del valor buscado por el indice
+    size_t valor_buscado;
+
+    //este es un manejo de error por si la posicion que se busca esta fuera del rango
+    if (posicion >= punt_datos->size) {
+        printf("Indice fuera de rango.\n");
+        return -1;
+    }
+
+    valor_buscado = punt_datos->data[posicion];
+
+    return valor_buscado;
+}
 
 void imprimir_arreglo(ArrDinamico *punt_datos){
 

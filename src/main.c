@@ -7,26 +7,59 @@
 #include "stack.h"
 
 int main (void){
-
-    printf("Lab 5 \n");
-
-    //este segundo commit se va a basar unicamente en inicializar el struct y el arreglo
-    //despues se va a interntar insertar al final algunos elementos, imprimir y liberar memoria
-
-
     //---------------------inicio seccion de prueba para el arreglo dinamico--------------------------------
+    size_t valor;
+    size_t valor_pruebas;
+    
     printf("Inicio pruebas de arreglo dinamicos \n"); 
+    
 
     ArrDinamico arreglo_1; 
-    init_arreglo(&arreglo_1, 15); //se le ingresa la posicion del arreglo al puntero que apunta al struct y la capacidad inicial
+    init_arreglo(&arreglo_1, 10); //se le ingresa la posicion del arreglo al puntero que apunta al struct y la capacidad inicial
 
     //se insertan varios para probar el programa
+    insertar_final(&arreglo_1, 10);
     insertar_final(&arreglo_1, 20);
     insertar_final(&arreglo_1, 30);
-    insertar_final(&arreglo_1, 7);
-    insertar_final(&arreglo_1, 100);
+    insertar_final(&arreglo_1, 40);
+    insertar_final(&arreglo_1, 50);
+    insertar_final(&arreglo_1, 160);
+    insertar_final(&arreglo_1, 170);
+    insertar_final(&arreglo_1, 180);
+    insertar_final(&arreglo_1, 190);
+    insertar_final(&arreglo_1, 1);
+    //intencionalmente se insertan 10 para poder ingresar uno nuevo y verificar la funcion de aumentar capacidad
 
+
+    printf("\n");
+    printf("El arreglo a analizar es el siguiente: \n"); 
+    printf("--------------------------- \n"); 
     imprimir_arreglo(&arreglo_1); 
+    printf("--------------------------- \n"); 
+    printf("\n");
+
+    valor_pruebas = 14;
+    printf("Prueba de insertar un elemento de valor :%zu \n", valor_pruebas); 
+    insertar_final(&arreglo_1, valor_pruebas);
+    printf("--------------------------- \n"); 
+    imprimir_arreglo(&arreglo_1); 
+    printf("--------------------------- \n");
+    printf("\n");
+
+    valor_pruebas = 8;
+    printf("Prueba de buscar un elemento en la posicion :%zu \n", valor_pruebas); 
+    valor = buscar_elemento_por_indice(&arreglo_1,valor_pruebas); 
+    printf("El valor buscado es:%zu \n", valor); 
+    printf("\n");
+
+    valor_pruebas = 3;
+    printf("Se va a eliminar el elemento en la posicion: %zu \n", valor_pruebas); 
+    eliminar_elemento_por_indice(&arreglo_1, valor_pruebas); 
+    printf("--------------------------- \n"); 
+    imprimir_arreglo(&arreglo_1); 
+    printf("--------------------------- \n");
+    printf("\n");
+
     free_arreglo(&arreglo_1); 
 
     printf("Fin pruebas de arreglo dinamicos \n"); 
