@@ -11,11 +11,12 @@ SRC = src/main.c \
 TARGET = prueba
 
 all:
-      @echo "Compilando programa..."
+	@echo "Compilando proyecto..."
 	@$(CC) $(CFLAGS) $(SRC) -o $(TARGET)
-      @echo "Compilacion exitosa"
+	@echo "Compilación exitosa."
 
 run: all
+	@echo "Ejecutando..."
 	@./$(TARGET)
 
 clean:
