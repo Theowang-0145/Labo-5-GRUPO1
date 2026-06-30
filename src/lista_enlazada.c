@@ -8,7 +8,7 @@ void init_lista(ListaEnlazada *punt_lista){
 	punt_lista->size = 0;
 }
 
-void insertar_inicio(ListaEnlazada *punt_lista, int valor){
+void lista_insertar_inicio(ListaEnlazada *punt_lista, int valor){
 
 	Nodo *nuevo_nodo = malloc(sizeof(Nodo)); //NUEVO PUNTERO
 
@@ -24,17 +24,17 @@ void insertar_inicio(ListaEnlazada *punt_lista, int valor){
 	punt_lista->size++; //AUMENTO
 }
 
-void  insertar_final(ListaEnlazada *punt_lista, int valor){
+void  lista_insertar_final(ListaEnlazada *punt_lista, int valor){
 
 	Nodo *nuevo_nodo = malloc(sizeof(Nodo)); //NUEVO PUNTER0
 
 	if (nuevo_nodo == NULL){ //MANEJO DE ERROR
-		printf("Error: no se pudo reservar memoria.\n);
+		printf("Error: no se pudo reservar memoria.\n");
 		return;
 	}
 
 	nuevo_nodo->data = valor; //ASIGNACION DE DATO
-	nuevo_nodo->siguiente = NULL
+	nuevo_nodo->siguiente = NULL;
 
 	if (punt_lista->head == NULL){ //LISTA VACIA
 		punt_lista->head = nuevo_nodo;
@@ -81,7 +81,7 @@ void free_lista(ListaEnlazada *punt_lista){
 	punt_lista->size = 0;
 }
 
-void insertar_posicion(ListaEnlazada *punt_lista, int valor, size_t posicion){
+void lista_insertar_posicion(ListaEnlazada *punt_lista, int valor, size_t posicion){
 
 	if (posicion > punt_lista->size){ //MANEJO DE ERROR
 		printf("Posicion fuera de rango.\n");
@@ -89,12 +89,12 @@ void insertar_posicion(ListaEnlazada *punt_lista, int valor, size_t posicion){
 	}
 
 	if (posicion == 0){ //INSERCION AL INICIO
-		insertar_inicio(punt_lista, valor);
+		lista_insertar_inicio(punt_lista, valor);
 		return;
 	}
 
 	if (posicion == punt_lista->size){ //INSERCION AL FINAL
-		insertar_final(punt_lista, valor);
+		lista_insertar_final(punt_lista, valor);
 		return;
 	}
 
@@ -119,7 +119,7 @@ void insertar_posicion(ListaEnlazada *punt_lista, int valor, size_t posicion){
 	punt_lista->size++; //AUMENTO
 }
 
-void eliminar_elemento(ListaEnlazada *punt_lista, int valor){
+void lista_eliminar_elemento(ListaEnlazada *punt_lista, int valor){
 
 	if (punt_lista->head == NULL){ //MANEJO DE ERROR
 		printf("La lista esta vacia.\n");
@@ -147,7 +147,7 @@ void eliminar_elemento(ListaEnlazada *punt_lista, int valor){
 	punt_lista->size--; //DISMINUCION DE TAMANO
 }
 
-int buscar_elemento(ListaEnlazada *punt_lista, int valor){
+int lista_buscar_elemento(ListaEnlazada *punt_lista, int valor){
 
 	Nodo *actual = punt_lista->head; //PUNTERO AUXILIAR
 	int posicion = 0;
@@ -163,43 +163,3 @@ int buscar_elemento(ListaEnlazada *punt_lista, int valor){
 
 	return -1; //NO ENCONTRADO
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
