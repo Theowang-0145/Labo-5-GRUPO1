@@ -65,6 +65,44 @@ int main (void){
     printf("Fin pruebas de arreglo dinamicos \n"); 
     //-------------------------------fin seccion de prueba para el arreglo dinamico----------------------
 
+    //-------------------------------Inicio seccion de prueba para listas enlazadas----------------------
 
-    return 0; 
+    printf("\nInicio pruebas para listas enlazadas\n\n")
+
+    ListaEnlazada lista;
+    init_lista(&lista);
+
+    insertar_inicio(&lista, 20);
+    insertar_inicio(&lista, 10);
+    insertar_final(&lista, 30);
+    insertar_final(&lista, 40);
+
+    printf("La lista inicial es la siguiente:\n");
+    imprimir_lista(&lista);
+
+    printf("\nPrueba de insertar el elemento 25 en la posicion 2\n");
+    insertar_posicion(&lista, 25, 2);
+    imprimir_lista(&lista);
+
+    printf("\nPrueba de buscar el elemento 30\n");
+    int posicion = buscar_elemento(&lista, 30);
+
+    if (posicion != -1){
+        printf("El elemento fue encontrado en la posicion: %d\n", posicion);
+    }
+    else{
+        printf("El elemento no fue encontrado.\n");
+    }
+
+    printf("\nSe va a eliminar el elemento de valor 25\n");
+    eliminar_elemento(&lista, 25);
+    imprimir_lista(&lista);
+
+    free_lista(&lista);
+
+    printf("\nFin de pruebas de listas enlazadas\n");
+
+    //--------------------------------Fin seccion de prueba para listas enlazadas------------------------
+
+    return 0;
 }
