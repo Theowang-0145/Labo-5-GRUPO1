@@ -1,4 +1,23 @@
-#ifndef arreglo_dinamico_h
-#define arreglo_dinamico_h
+#ifndef ARREGLO_DINAMICO_h
+#define ARREGLO_DINAMICO_h
+
+#include <stddef.h>
+
+                
+typedef struct {    //este es el struct base para el arreglo dinamico
+    int *data;
+    size_t size;        //se utilizan los tipos de datos size_t igual que en la practica
+    size_t capacidad;  //tamano actual y capacidad total del arreglo
+} ArrDinamico;
+
+
+//este conjunto de funciones reciben el puntero hacia el arreglo para modificarlo o crearle memoria
+void init_arreglo(ArrDinamico *punt_datos, size_t capacidad_inicial); 
+void insertar_final(ArrDinamico *punt_datos, int valor); //este debe de tener una verificacion de espacio
+void eliminar_elemento_por_indice(ArrDinamico *punt_datos, size_t posicion); //al utilizar las posiciones en comparaciones y demas se debe acomodar
+size_t buscar_elemento_por_indice(ArrDinamico *punt_datos, size_t posicion); //con el tipo de variables del struct
+void imprimir_arreglo(ArrDinamico *punt_datos);
+void free_arreglo(ArrDinamico *punt_datos);
+
 
 #endif
