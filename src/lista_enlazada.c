@@ -140,7 +140,11 @@ void lista_eliminar_elemento(ListaEnlazada *punt_lista, int valor){
 	}
 
 	if (anterior == NULL){ //ELIMINACION DEL PRIMER NODO
-		punt_lista->head = actual ->siguiente;
+		punt_lista->head = actual->siguiente;
+	}
+
+	else{
+		anterior->siguiente = actual->siguiente; //REEMPLAZO DE ENLACE
 	}
 
 	free(actual); //LIBERACION
