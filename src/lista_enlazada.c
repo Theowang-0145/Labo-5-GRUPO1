@@ -80,3 +80,126 @@ void free_lista(ListaEnlazada *punt_lista){
 	punt_lista->head = NULL;
 	punt_lista->size = 0;
 }
+
+void insertar_posicion(ListaEnlazada *punt_lista, int valor, size_t posicion){
+
+	if (posicion > punt_lista->size){ //MANEJO DE ERROR
+		printf("Posicion fuera de rango.\n");
+		return;
+	}
+
+	if (posicion == 0){ //INSERCION AL INICIO
+		insertar_inicio(punt_lista, valor);
+		return;
+	}
+
+	if (posicion == punt_lista->size){ //INSERCION AL FINAL
+		insertar_final(punt_lista, valor);
+		return;
+	}
+
+	Nodo *nuevo_nodo = malloc(sizeof(Nodo)); //NUEVO PUNTERO
+
+	if (nuevo_nodo == NULL){ //MANEJO DE ERROR
+		printf("Error: no se pudo reservar memoria.\n");
+		return;
+	}
+
+	nuevo_nodo->data = valor;
+
+	Nodo *actual = punt_lista->head; //PUNTERO AUXILIAR
+
+	for (size_t i = 0; i < posicion - 1; i++){ //RECORRIDO
+		actual = actual->siguiente;
+	}
+
+	nuevo_nodo->siguiente = actual->siguiente; //NUEVO ENLACE
+	actual->siguiente = nuevo_nodo; //REEMPLAZO
+
+	punt_lista->size++; //AUMENTO
+}
+
+void eliminar_elemento(ListaEnlazada *punt_lista, int valor){
+
+	if (punt_lista->head == NULL){ //MANEJO DE ERROR
+		printf("La lista esta vacia.\n");
+		return;
+	}
+
+	Nodo *actual = punt_lista->head; //PUNTERO AUXILIAR
+	Nodo *anterior = NULL;
+
+	while (actual != NULL && actual->data != valor){ //BUSQUEDA
+		anterior = actual;
+		actual = actual->siguiente;
+	}
+
+	if (actual == NULL){ //DATO NO ENCONTRADO
+		printf("Elemento no encontrado.\n");
+		return;
+	}
+
+	if (anterior == NULL){ //ELIMINACION DEL PRIMER NODO
+		punt_lista->head = actual ->siguiente;
+	}
+
+	free(actual); //LIBERACION
+	punt_lista->size--; //DISMINUCION DE TAMANO
+}
+
+int buscar_elemento(ListaEnlazada *punt_lista, int valor){
+
+	Nodo *actual = punt_lista->head; //PUNTERO AUXILIAR
+	int posicion = 0;
+
+	while (actual != NULL){ //RECORRIDO
+		if (actual->data == valor){
+			return posicion; //RETORNA POSICION
+		}
+
+		actual = actual->siguiente;
+		posicion++;
+	}
+
+	return -1; //NO ENCONTRADO
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
