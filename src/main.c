@@ -104,5 +104,62 @@ int main (void){
 
     //--------------------------------Fin seccion de prueba para listas enlazadas------------------------
 
+
+   //---------------------------------INICIO DE PRUEBA PARA LISTAS DOBLEMENTE ENLAZADAS-------------------
+
+    DoublyLinkedList *list = createList();
+//Aca se crean las dos lista, la primera coloca los valores adelante
+    insertAtBeginning(list, 10);
+    insertAtBeginning(list, 5);
+//Mientras que aca, la segunda lista se crea y manda los valores al final 
+    insertAtEnd(list, 20);
+    insertAtEnd(list, 30);
+//para provar la modificacion de elementos, se cambia el elemento 20 a valor 15 en la lista 2 para probar errores despues
+    insertAtPosition(list, 15, 2);
+//estos print son informativos de que algo esta ocurriendo, sea hacia adelante, o atras
+    printf("Hacia adelante:\n");
+    printForward(list);
+
+    printf("\nHacia atras:\n");
+    printBackward(list);
+//esto es lo mencionado anteriormente, se genera a proposito un fallo para ver que la insercion de elementos en una lista si ocurre
+    Node *found = searchElement(list, 20);
+
+    if (found != NULL) {
+        printf("\nElemento 20 encontrado\n");
+    }
+//ahora, usando el mismo elemento 15, se borra para generar otra busqueda despues de un elemento que sabemos, ya existe
+    deleteElement(list, 15);
+
+    printf("\nDespues de eliminar 15:\n");
+    printForward(list);
+//aca ya se solicita eliminar esta lista para disminuir el uso de memoria 
+    freeList(list);
+
+//---------------------------------------- FIN DE PRUEBAS DE DOBLE LISTAS ENLAZADAS------------------------
+
+//--------------------------------------- PRUEBA DE STACK ------------------------------------------------------
+
+    Stack *stack = createStack();
+//aca se añaden unos valor que luego se moveran para denotar las modificaciones que se realizan 
+    push(stack, 10);
+    push(stack, 20);
+    push(stack, 30);
+
+    printStack(stack);
+//se imprime previo a la modificacion por control 
+    printf("Top: %d\n", peek(stack));
+//aca se modificara quien este de primero
+    printf("Pop: %d\n", pop(stack));
+//y aca se modifica  en el popo el stack para ir eliminando los elementos que se encuentras modificados en el top y por tanto, en el ultimo stack generado 
+    printStack(stack);
+//por ultimo, el sistema nos informa que ha concluido con la gecuioon yu que el stack temporal esta vacio 
+    printf("Esta vacio?: %d\n", isEmpty(stack));
+
+    freeStack(stack);
+//para buenas practicas, se elimina el espacio en memoria asignado al stack
     return 0;
 }
+
+//---------------------------------------- FIN DE PRUEBAS PARA STACK-----------------------------------------
+
